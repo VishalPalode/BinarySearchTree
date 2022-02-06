@@ -8,49 +8,56 @@ namespace BinarySearchTree
 {
     public class MyBinaryNode<T> where T : IComparable
     {
-            T nodedata;
-            public MyBinaryNode<T> lefttree { get; set; }
-            public MyBinaryNode<T> righttree { get; set; }
-            bool result = false;
+        T nodedata;
+        public MyBinaryNode<T> lefttree { get; set; }
+        public MyBinaryNode<T> righttree { get; set; }
+        bool result = false;
+        int leftcount = 0;
+        int rightcount = 0;
 
-            public MyBinaryNode(T nodedata)
-            {
-                this.nodedata = nodedata;
-                this.nodedata = nodedata;
-                this.lefttree = null;
-                this.righttree = null;
-            }
+        public MyBinaryNode(T nodedata)
+        {
+            this.nodedata = nodedata;
+            this.nodedata = nodedata;
+            this.lefttree = null;
+            this.righttree = null;
+        }
 
-            public void Insert(T item)
+        public void Insert(T item)
+        {
+            T currentnodevalue = this.nodedata;
+            if ((currentnodevalue.CompareTo(item)) > 0)
             {
-                T currentnodevalue = this.nodedata;
-                if ((currentnodevalue.CompareTo(item)) > 0)
-                {
-                    if (this.lefttree == null)
-                        this.lefttree = new MyBinaryNode<T>(item);
-                    else
-                        this.lefttree.Insert(item);
-                }
+                if (this.lefttree == null)
+                    this.lefttree = new MyBinaryNode<T>(item);
                 else
-                {
-                    if (this.righttree == null)
-                        this.righttree = new MyBinaryNode<T>(item);
-                    else
-                        this.righttree.Insert(item);
-                }
+                    this.lefttree.Insert(item);
             }
-            public void Display()
+            else
             {
-                if (this.lefttree != null)
-                {
-                    this.lefttree.Display();
-                }
-                Console.WriteLine(this.nodedata.ToString());
-                if (this.righttree != null)
-                {
-                    this.righttree.Display();
-                }
+                if (this.righttree == null)
+                    this.righttree = new MyBinaryNode<T>(item);
+                else
+                    this.righttree.Insert(item);
             }
-        
+        }
+        public void Display()
+        {
+            if (this.lefttree != null)
+            {
+                this.leftcount++;
+                this.lefttree.Display();
+            }
+            Console.WriteLine(this.nodedata.ToString());
+            if (this.righttree != null)
+            {
+                this.rightcount++;
+                this.righttree.Display();
+            }
+        }
+        public void Size()
+        {
+            Console.WriteLine("Size of Binary Serach Tree " + (1 + leftcount + rightcount));
+        }
     }
 }
