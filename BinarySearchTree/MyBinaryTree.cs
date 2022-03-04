@@ -13,15 +13,11 @@ namespace BinarySearchTree
         public MyBinaryNode<T> lefttree { get; set; }
         public MyBinaryNode<T> righttree { get; set; }
         bool result = false;
-
-
-
         static int leftcount = 0;
         static int rightcount = 0;
         static MyBinaryNode()
         {
             Console.WriteLine("static constructor");
-
         }
         public MyBinaryNode(T nodedata)
         {
@@ -31,8 +27,6 @@ namespace BinarySearchTree
             this.lefttree = null;
             this.righttree = null;
         }
-
-
         public void Insert(T item)
         {
             T currentnodevalue = this.nodedata;
@@ -67,7 +61,6 @@ namespace BinarySearchTree
             {
                 rightcount++;
                 this.righttree.Display();
-
             }
         }
     }
